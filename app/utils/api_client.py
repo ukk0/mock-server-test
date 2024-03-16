@@ -1,7 +1,6 @@
 from random import randint
 from typing import Any, Dict, Optional, Union
 
-from lorem_text import lorem
 from requests import Response, request
 
 API_URL = "https://restful-booker.herokuapp.com"
@@ -11,15 +10,15 @@ USER_AGENT = "Automatic-API-test"
 
 class TestAPI:
     booking_payload = {
-        "firstname": lorem.words(1),
-        "lastname": lorem.words(1),
-        "totalprice": randint(100, 1000),
+        "firstname": "Testy",
+        "lastname": "McTester",
+        "totalprice": randint(100, 999),
         "depositpaid": True,
         "bookingdates": {
             "checkin": "2024-01-01",
             "checkout": "2024-01-19",
         },
-        "additionalneeds": lorem.words(5),
+        "additionalneeds": "Morning coffee to bed.",
     }
 
     @classmethod
