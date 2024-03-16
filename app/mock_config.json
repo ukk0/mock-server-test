@@ -1,0 +1,12 @@
+{
+    "valid_mocks": [
+        "mock_booking_success",
+        "mock_booking_found",
+        "mock_delete_booking_success"
+    ],
+    "cassette_mappings": {
+        "mock_booking_success": "booking_create_success",
+        "mock_booking_found": "find_booking_success",
+        "mock_delete_booking_success": "delete_booking_success"
+    }
+}
