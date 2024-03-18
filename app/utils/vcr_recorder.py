@@ -14,7 +14,7 @@ vcr_config = vcr.VCR(
 def record_cassettes():
     booking_id = ""
 
-    @vcr.use_cassette("create_booking/booking_create_success.yaml", **vcr_config)
+    @vcr.use_cassette("create_booking/create_booking_success.yaml", **vcr_config)
     def record_booking_create_success():
         nonlocal booking_id
         booking_id = TestAPI.create_booking().json()["bookingid"]
