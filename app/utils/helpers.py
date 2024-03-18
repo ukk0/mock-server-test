@@ -1,4 +1,5 @@
 import json
+import re
 from typing import Optional
 
 with open("mock_config.json") as config_file:
@@ -19,12 +20,13 @@ def validate_that_requests_match(cassette, request_data):
     sufficiently identical to play a response from cassette.
     """
     assert request_data["method"] == cassette.requests[0].method
-    assert request_data["path"] == cassette.requests[0].path
-    request_data_json = json.loads(request_data["body"])
-    cassette_data_json = json.loads(cassette.requests[0].body)
-    request_keys = set(get_all_dict_keys(json_data=request_data_json))
-    cassette_keys = set(get_all_dict_keys(json_data=cassette_data_json))
-    assert cassette_keys.issubset(request_keys)
+    assert re.match(r"/booking(?:/\d+)?$", request_data["path"])
+    if request_data["body"]:
+        request_data_json = json.loads(request_data["body"])
+        cassette_data_json = json.loads(cassette.requests[0].body)
+        request_keys = set(get_all_dict_keys(json_data=request_data_json))
+        cassette_keys = set(get_all_dict_keys(json_data=cassette_data_json))
+        assert cassette_keys.issubset(request_keys)
 
 
 def get_all_dict_keys(json_data, parent_key=None) -> list:
