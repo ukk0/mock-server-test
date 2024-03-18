@@ -12,9 +12,9 @@ from app.utils.helpers import get_all_dict_keys
 class ContractVerifier:
     def __init__(self):
         self.cassettes_dir = "cassettes"
-        self.create_booking_cassette = os.path.join(self.cassettes_dir, "create_booking_success.yaml")
-        self.find_booking_cassette = os.path.join(self.cassettes_dir, "find_booking_success.yaml")
-        self.delete_booking_cassette = os.path.join(self.cassettes_dir, "delete_booking_success.yaml")
+        self.create_booking_cassette = os.path.join(self.cassettes_dir, "create_booking", "create_booking_success.yaml")
+        self.find_booking_cassette = os.path.join(self.cassettes_dir, "find_booking", "find_booking_success.yaml")
+        self.delete_booking_cassette = os.path.join(self.cassettes_dir, "delete_booking", "delete_booking_success.yaml")
 
     def load_cassette_responses(self):
         return {
